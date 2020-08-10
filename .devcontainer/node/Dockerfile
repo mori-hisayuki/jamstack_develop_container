@@ -19,4 +19,4 @@ RUN mkdir /home/$USER_NAME/develop \
 
 USER vscode
 WORKDIR /home/$USER_NAME/develop
-RUN git clone git@github.com:mori-hisayuki/jamstack_develop_container.git /home/$USER_NAME/develop
+RUN git clone git@github.com:mori-hisayuki/serverless-todo-netlify-fauna.git /home/$USER_NAME/develop
