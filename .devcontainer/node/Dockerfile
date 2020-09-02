@@ -8,7 +8,8 @@ ARG USER_GID
 RUN deluser --remove-home node \
     && addgroup -g $USER_GID -S $GROUP_NAME \
     && adduser -u $USER_UID -s /bin/sh -S $USER_NAME $GROUP_NAM
-RUN apk --update --no-cache add git curl bash sudo openssh-client
+RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN apk --update --no-cache add git curl bash sudo openssh-client direnv@testing
 RUN echo "$USER_NAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${USER_NAME} \
     && chmod 0440 /etc/sudoers.d/$USER_NAME
 
@@ -19,4 +20,6 @@ RUN mkdir /home/$USER_NAME/develop \
 
 USER vscode
 WORKDIR /home/$USER_NAME/develop
-RUN git clone git@github.com:mori-hisayuki/serverless-todo-netlify-fauna.git /home/$USER_NAME/develop
+RUN git clone git@github.com:mori-hisayuki/serverless-todo-netlify-fauna.git /home/$USER_NAME/develop \
+    && cd /home/${USER_NAME}/develop \
+    && yarn install
