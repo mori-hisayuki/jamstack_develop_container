@@ -42,7 +42,9 @@
 		"yokawasa.jwt-debugger",
 		"patricklee.vsnotes",
 		"github.vscode-pull-request-github",
-		"austin.vscode-twitter"
+		"austin.vscode-twitter",
+		"apollographql.vscode-apollo",
+		"fauna.faunadb"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
